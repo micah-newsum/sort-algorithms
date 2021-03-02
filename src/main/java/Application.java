@@ -30,6 +30,9 @@ public class Application {
     System.out.println("After Sort");
     insertionSort(ints);
     printArray(ints);
+
+    // shell sort
+    
   }
 
   public static int[] createUnsortedArray(){
@@ -95,7 +98,7 @@ public class Application {
   /**
    * Insertion sort is named as such because the element is inserted at specific positions within the array.
    * The time complexity of the algorithm is O(n^2) because the algorithm may require an iteration over every element n. Then, for each
-   * value n, the algorithm may require a value comparison. Thus, n*n = n^2.
+   * value n, the algorithm may require a shift in value. Thus, n*n = n^2 (quadratic).
    * @param ints
    */
   public static void insertionSort(int[] ints){
