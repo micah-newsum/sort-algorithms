@@ -32,7 +32,13 @@ public class Application {
     printArray(ints);
 
     // shell sort
-    
+    System.out.println("-----Shell Sort-----");
+    ints = createUnsortedArray();
+    System.out.println("Before Sort");
+    printArray(ints);
+    System.out.println("After Sort");
+    shellSort(ints);
+    printArray(ints);
   }
 
   public static int[] createUnsortedArray(){
@@ -114,5 +120,28 @@ public class Application {
 
       ints[i] = temp;
     }
+  }
+
+  /**
+   * Goal of insertion sort is to partially sort array prior to performing insertion sort using a gap value. This reduces the number
+   * of element shifts in the array. As a result, the shell sort algorithm is an improvement over insertion sort.
+   * @param ints
+   */
+  public static void shellSort(int[] ints){
+    for (int gap = ints.length / 2; gap > 0; gap /= 2){
+      for (int i = gap; i < ints.length; i++){
+        int temp = ints[i];
+        int j = i;
+
+        while (j >= gap && ints[j - gap] > temp){
+          ints[j] = ints[j - gap];
+          j -= gap;
+        }
+
+        ints[j] = temp;
+      }
+
+    }
+
   }
 }
