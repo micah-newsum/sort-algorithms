@@ -1,3 +1,8 @@
+package com.newsum;
+
+import com.newsum.sort.MergeSort;
+import com.newsum.sort.Sortable;
+
 import java.util.Arrays;
 
 public class Application {
@@ -38,6 +43,16 @@ public class Application {
     printArray(ints);
     System.out.println("After Sort");
     shellSort(ints);
+    printArray(ints);
+
+    // merge sort
+    System.out.println("-----Merge Sort-----");
+    ints = createUnsortedArray();
+    System.out.println("Before Sort");
+    printArray(ints);
+    System.out.println("After Sort");
+    Sortable mergeSort = new MergeSort();
+    mergeSort.sort(ints);
     printArray(ints);
   }
 
@@ -123,16 +138,19 @@ public class Application {
   }
 
   /**
-   * Goal of insertion sort is to partially sort array prior to performing insertion sort using a gap value. This reduces the number
-   * of element shifts in the array. As a result, the shell sort algorithm is an improvement over insertion sort.
+   * Goal of shell sort is to partially sort array prior to performing insertion sort using a gap value. This reduces the number
+   * of element shifts in the array. As a result, the shell sort algorithm is an improvement over insertion sort. Shell sort has a time complexity of
+   * O(n^2)
    * @param ints
    */
   public static void shellSort(int[] ints){
+    // a gap value is defined based on the size of the array
     for (int gap = ints.length / 2; gap > 0; gap /= 2){
       for (int i = gap; i < ints.length; i++){
         int temp = ints[i];
         int j = i;
 
+        // essentially insertion sort at this point
         while (j >= gap && ints[j - gap] > temp){
           ints[j] = ints[j - gap];
           j -= gap;
@@ -140,8 +158,47 @@ public class Application {
 
         ints[j] = temp;
       }
+    }
+  }
 
+  public static void mergeSort(int[] ints){
+    mergeSort(ints,0,ints.length);
+  }
+
+  /**
+   * A recursive algorithm with a time complexity of O(nlog(n))
+   */
+  public static void mergeSort(int[] ints, int start, int end){
+    // base case of recursive method, which signifies a one element array
+    if (end - start < 2){
+      return;
     }
 
+    int mid = (start + end) / 2;
+    mergeSort(ints, start, mid);
+    mergeSort(ints, mid, end);
+    merge(ints, start, mid, end);
+  }
+
+  public static void merge(int[] ints, int start, int mid, int end){
+    // this optimization prevents unnecessary merging
+    if (ints[mid - 1] <= ints[mid]){
+      return;
+    }
+
+    int i = start;
+    int j = mid;
+    int tempIndex = 0;
+
+    // create temp array
+    int[] temp = new int[end - start];
+
+    // merges partitions
+    while (i < mid && j < end){
+      temp[tempIndex++] = ints[i] <= ints[j] ? ints[i++] : ints[j++];
+    }
+
+    System.arraycopy(ints, i, ints,start + tempIndex, mid - i);
+    System.arraycopy(temp,0, ints, start, tempIndex);
   }
 }
