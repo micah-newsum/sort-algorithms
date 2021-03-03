@@ -1,7 +1,7 @@
 package com.newsum.sort;
 
 /**
- * Encapsulates merge sort algorithm.
+ * Encapsulates the recursive merge sort algorithm.
  *  - Time complexity: n * log(n)
  *  - In place: no
  *  - Stable: yes
@@ -15,10 +15,7 @@ public class MergeSort implements Sortable{
   private void mergeSort(int[] ints){
     mergeSort(ints,0,ints.length);
   }
-
-  /**
-   * A recursive algorithm with a time complexity of O(nlog(n))
-   */
+  
   private void mergeSort(int[] ints, int start, int end){
     // base case of recursive method, which signifies a one element array
     if (end - start < 2){
