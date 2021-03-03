@@ -3,6 +3,7 @@ package com.newsum;
 import com.newsum.sort.BubbleSort;
 import com.newsum.sort.InsertionSort;
 import com.newsum.sort.MergeSort;
+import com.newsum.sort.QuickSort;
 import com.newsum.sort.SelectionSort;
 import com.newsum.sort.ShellSort;
 import com.newsum.sort.Sortable;
@@ -25,6 +26,9 @@ public class Application {
 
     // merge sort
     runAlgorithm(new MergeSort());
+
+    // quick sort
+    runAlgorithm(new QuickSort());
   }
 
   public static int[] createUnsortedArray(){
