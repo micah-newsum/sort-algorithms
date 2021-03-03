@@ -2,7 +2,7 @@ package com.newsum.sort;
 
 /**
  * Encapsulates merge sort algorithm.
- *  - Time complexity: n*log(n)
+ *  - Time complexity: n * log(n)
  *  - In place: no
  *  - Stable: yes
  */
