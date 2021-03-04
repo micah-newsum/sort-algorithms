@@ -1,6 +1,7 @@
 package com.newsum;
 
 import com.newsum.sort.BubbleSort;
+import com.newsum.sort.CountingSort;
 import com.newsum.sort.InsertionSort;
 import com.newsum.sort.MergeSort;
 import com.newsum.sort.QuickSort;
@@ -29,6 +30,10 @@ public class Application {
 
     // quick sort
     runAlgorithm(new QuickSort());
+
+    // count sort
+    int[] countSortInts = {2, 5, 9, 8, 2, 8, 7, 10, 4, 3};
+    runAlgorithm(new CountingSort(),countSortInts);
   }
 
   public static int[] createUnsortedArray(){
@@ -43,6 +48,15 @@ public class Application {
   public static void runAlgorithm(Sortable sortable){
     System.out.printf("-----%s-----\n",sortable.getClass().getSimpleName());
     int[] ints = createUnsortedArray();
+    System.out.println("Before Sort:");
+    printArray(ints);
+    System.out.println("After Sort:");
+    sortable.sort(ints);
+    printArray(ints);
+  }
+
+  public static void runAlgorithm(Sortable sortable, int[] ints){
+    System.out.printf("-----%s-----\n",sortable.getClass().getSimpleName());
     System.out.println("Before Sort:");
     printArray(ints);
     System.out.println("After Sort:");
