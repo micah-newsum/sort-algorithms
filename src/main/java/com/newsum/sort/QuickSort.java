@@ -1,8 +1,8 @@
 package com.newsum.sort;
 
 /**
- * Quick sort is a recursive, in-place and unstable algorithm that uses the concept of a pivot to partition the array.
- * The time complexity is O to the n * log(n) because it partitions the array into two halves.
+ * Quick sort is a recursive, in-place, and unstable algorithm that uses the concept of a pivot to partition an array.
+ * The time complexity is O to the n * log(n) because it repeatedly partitions the array into two halves.
  */
 public class QuickSort implements Sortable{
   @Override
