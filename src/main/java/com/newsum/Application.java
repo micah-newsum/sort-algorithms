@@ -39,6 +39,12 @@ public class Application {
     // radix sort
     int[] radixArray = {4725, 4586, 8792, 1594, 5729};
     runAlgorithm(new RadixSort(), radixArray);
+
+    // jdk sort
+    runJdkSortAlgorithm();
+
+    // jdk parallel sort
+    runJdkParallelSortAlgorithm();
   }
 
   public static int[] createUnsortedArray(){
@@ -66,6 +72,26 @@ public class Application {
     printArray(ints);
     System.out.println("After Sort:");
     sortable.sort(ints);
+    printArray(ints);
+  }
+
+  public static void runJdkSortAlgorithm(){
+    System.out.println("-----JDK-----");
+    int[] ints = createUnsortedArray();
+    System.out.println("Before Sort:");
+    printArray(ints);
+    System.out.println("After Sort:");
+    Arrays.sort(ints);
+    printArray(ints);
+  }
+
+  public static void runJdkParallelSortAlgorithm(){
+    System.out.println("-----JDK Parallel Sorts-----");
+    int[] ints = createUnsortedArray();
+    System.out.println("Before Sort:");
+    printArray(ints);
+    System.out.println("After Sort:");
+    Arrays.parallelSort(ints);
     printArray(ints);
   }
 }
