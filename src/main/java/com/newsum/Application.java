@@ -5,6 +5,7 @@ import com.newsum.sort.CountingSort;
 import com.newsum.sort.InsertionSort;
 import com.newsum.sort.MergeSort;
 import com.newsum.sort.QuickSort;
+import com.newsum.sort.RadixSort;
 import com.newsum.sort.SelectionSort;
 import com.newsum.sort.ShellSort;
 import com.newsum.sort.Sortable;
@@ -34,6 +35,10 @@ public class Application {
     // count sort
     int[] countSortInts = {2, 5, 9, 8, 2, 8, 7, 10, 4, 3};
     runAlgorithm(new CountingSort(),countSortInts);
+
+    // radix sort
+    int[] radixArray = {4725, 4586, 8792, 1594, 5729};
+    runAlgorithm(new RadixSort(), radixArray);
   }
 
   public static int[] createUnsortedArray(){
