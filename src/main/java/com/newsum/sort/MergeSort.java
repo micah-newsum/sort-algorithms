@@ -36,7 +36,7 @@ public class MergeSort implements Sortable{
   }
 
   /**
-   *
+   * Merges sorted logically partitioned left and right arrays
    * @param input
    * @param start
    * @param mid
@@ -57,7 +57,7 @@ public class MergeSort implements Sortable{
 
     // merges left & right into temp array
     while (i < mid && j < end){
-      temp[tempIndex++] = input[i] >= input[j] ? input[i++] : input[j++];
+      temp[tempIndex++] = input[i] >= input[j] ? input[i++] : input[j++]; // = in >= ensures algorithm is stable sort
     }
 
     // copies elements from logical left array to input array that weren't copied to temp array
