@@ -8,45 +8,62 @@ package com.newsum.sort;
  */
 public class MergeSort implements Sortable{
   @Override
-  public void sort(int[] ints) {
-    mergeSort(ints,0,ints.length);
+  public void sort(int[] input) {
+    mergeSort(input,0,input.length);
   }
 
-  private void mergeSort(int[] ints){
-    mergeSort(ints,0,ints.length);
+  private void mergeSort(int[] input){
+    mergeSort(input,0,input.length);
   }
   
-  private void mergeSort(int[] ints, int start, int end){
-    // base case of recursive method, which signifies a one element array
+  private void mergeSort(int[] input, int start, int end){
+    // base case of recursive method signifying a one element array
     if (end - start < 2){
       return;
     }
 
+    // set point at which to split array in 2 logical partitions
     int mid = (start + end) / 2;
-    mergeSort(ints, start, mid);
-    mergeSort(ints, mid, end);
-    merge(ints, start, mid, end);
+
+    // merge sort logical left array
+    mergeSort(input, start, mid);
+
+    // merge sort logical right array
+    mergeSort(input, mid, end);
+
+    // merge logical left & right arrays
+    merge(input, start, mid, end);
   }
 
-  private void merge(int[] ints, int start, int mid, int end){
-    // this optimization prevents unnecessary merging
-    if (ints[mid - 1] <= ints[mid]){
+  /**
+   *
+   * @param input
+   * @param start
+   * @param mid
+   * @param end
+   */
+  private void merge(int[] input, int start, int mid, int end){
+    // this optimization prevents unnecessary merging of left & array
+    if (input[mid - 1] >= input[mid]){
       return;
     }
 
     int i = start;
     int j = mid;
-    int tempIndex = 0;
+    int tempIndex = 0; // keeps track of location in temp array
 
     // create temp array
     int[] temp = new int[end - start];
 
-    // merges partitions
+    // merges left & right into temp array
     while (i < mid && j < end){
-      temp[tempIndex++] = ints[i] <= ints[j] ? ints[i++] : ints[j++];
+      temp[tempIndex++] = input[i] >= input[j] ? input[i++] : input[j++];
     }
 
-    System.arraycopy(ints, i, ints,start + tempIndex, mid - i);
-    System.arraycopy(temp,0, ints, start, tempIndex);
+    // copies elements from logical left array to input array that weren't copied to temp array
+    System.arraycopy(input, i, input,start + tempIndex, mid - i);
+
+    // copy all elements from temp array to input array
+    System.arraycopy(temp,0, input, start, tempIndex);
   }
 }
