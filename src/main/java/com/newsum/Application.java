@@ -1,6 +1,7 @@
 package com.newsum;
 
 import com.newsum.sort.BubbleSort;
+import com.newsum.sort.BucketSort;
 import com.newsum.sort.CountingSort;
 import com.newsum.sort.InsertionSort;
 import com.newsum.sort.MergeSort;
@@ -31,6 +32,10 @@ public class Application {
 
     // quick sort
     runAlgorithm(new QuickSort());
+
+    // bucket sort
+    int[] bucketSortInts = {54, 46, 83, 66, 95, 92, 43};
+    runAlgorithm(new BucketSort(), bucketSortInts);
 
     // count sort
     int[] countSortInts = {2, 5, 9, 8, 2, 8, 7, 10, 4, 3};
